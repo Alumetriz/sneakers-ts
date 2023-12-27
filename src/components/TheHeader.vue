@@ -15,19 +15,23 @@
     <nav>
       <ul class="flex gap-8">
         <li class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
-          <a href="#" class="flex gap-2.5">
-            <img src="../../public/images/cart.svg" alt="Корзина" />
-            <span class="font-bold text-black">Корзина</span>
-          </a>
+          <router-link to="/orders">
+            <div class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
+              <img src="../../public/images/cart.svg" alt="Корзина" />
+              <span class="font-bold text-black">Корзина</span>
+            </div>
+          </router-link>
         </li>
-        <router-link to="/Favorites">
-          <li class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
-            <img src="../../public/images/heart.svg" alt="Закладки" />
-            <span class="text-[#5C5C5C] font-normal">Закладки</span>
-          </li>
-        </router-link>
+        <li>
+          <router-link to="/favorites">
+            <div class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
+              <img src="../../public/images/heart.svg" alt="Закладки" />
+              <span class="text-[#5C5C5C] font-normal">Закладки</span>
+            </div>
+          </router-link>
+        </li>
         <li class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
-          <a href="#" class="flex gap-2.5">
+          <a href="#" class="flex gap-3">
             <img src="../../public/images/profile.svg" alt="Профиль" />
             <span class="text-[#5C5C5C] font-normal">Профиль</span>
           </a>
