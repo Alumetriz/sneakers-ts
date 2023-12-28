@@ -1,4 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useCartStore } from '@/stores/CartStore'
+import { ref } from 'vue'
+
+const cartStore = useCartStore()
+
+const emit = defineEmits<{
+  (e: 'open-cart', cartIsOpen: boolean): void
+}>()
+
+const openCart = (): void => {
+  cartStore.openCart()
+  emit('open-cart', cartStore.cartIsOpen)
+}
+</script>
 
 <template>
   <header class="flex justify-between items-center border-b border-[#EAEAEA] p-11">
@@ -14,13 +28,16 @@
 
     <nav>
       <ul class="flex gap-8">
-        <li class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
-          <router-link to="/orders">
-            <div class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
-              <img src="/images/cart.svg" alt="Корзина" />
-              <span class="font-bold text-black">Корзина</span>
-            </div>
-          </router-link>
+        <li
+          class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black"
+          @click="openCart"
+        >
+          <!--          <router-link to="/orders">-->
+          <div class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
+            <img src="/images/cart.svg" alt="Корзина" />
+            <span class="font-bold text-black">Корзина</span>
+          </div>
+          <!--          </router-link>-->
         </li>
         <li>
           <router-link to="/favorites">
