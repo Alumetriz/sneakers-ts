@@ -1,13 +1,24 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import type { Product } from '@/types'
+import { useCartStore } from '@/stores/CartStore'
 
-defineProps({
+const props = defineProps({
   product: {
     type: Object as PropType<Product>,
     required: true
   }
 })
+
+const cartStore = useCartStore()
+
+const toggleProductToCart = () => {
+  if (!props.product?.isOrdered) {
+    cartStore.addProductToCart(props.product)
+  } else {
+    cartStore.deleteProductFromCart(props.product)
+  }
+}
 </script>
 
 <template>
@@ -32,12 +43,12 @@ defineProps({
       </div>
 
       <img
-        v-if="!product.isOrdered"
-        src="/images/plus.svg"
+        :src="!product.isOrdered ? '/images/plus.svg' : '/images/checked.svg'"
         alt="Add"
         class="cursor-pointer h-9 w-9"
+        @click="toggleProductToCart"
       />
-      <img v-else src="/images/checked.svg" alt="Added" class="cursor-pointer h-9 w-9" />
+      <!--      <img v-else src="/images/checked.svg" alt="Added" class="cursor-pointer h-9 w-9" />-->
     </div>
   </div>
 </template>

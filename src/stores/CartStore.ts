@@ -26,6 +26,14 @@ export const useCartStore = defineStore('CartStore', {
     },
     closeCart() {
       this.cartIsOpen = false
+    },
+    addProductToCart(product: Product) {
+      product.isOrdered = true
+      this.list.push(product)
+    },
+    deleteProductFromCart(product: Product) {
+      product.isOrdered = false
+      this.list = this.list.filter((p) => p.id !== product.id)
     }
   },
   getters: {}
