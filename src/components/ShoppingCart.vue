@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ArrowRightIcon, ArrowLeftIcon } from '@heroicons/vue/24/solid'
+import CartList from '@/components/CartList.vue'
 import { useCartStore } from '@/stores/CartStore'
 
 const cartStore = useCartStore()
@@ -29,38 +30,38 @@ const closeCart = () => {
           <h2 class="font-bold text-2xl">Корзина</h2>
         </div>
 
-        <!--        <cart-list v-if="orders.length && !ordersIsBought"></cart-list>-->
-        <!--        <div v-else class="flex flex-col gap-3 items-center justify-center h-full">-->
-        <!--          <img-->
-        <!--            :src="-->
-        <!--              ordersIsBought-->
-        <!--                ? '../src/assets/img/order-success-icon.png'-->
-        <!--                : '../src/assets/img/package-icon.png'-->
-        <!--            "-->
-        <!--            alt=""-->
-        <!--            class="h-32 w-32"-->
-        <!--          />-->
-        <!--          <h3 class="font-semibold text-2xl">-->
-        <!--            &lt;!&ndash;            Корзина пустая&ndash;&gt;-->
-        <!--            {{ ordersIsBought ? 'Заказ оформлен!' : 'Корзина пустая' }}-->
-        <!--          </h3>-->
-        <!--          <p class="text-lg text-[#9D9D9D] max-w-sm text-center">-->
-        <!--            {{-->
-        <!--              ordersIsBought-->
-        <!--                ? 'Ваш заказ скоро будет передан курьерской доставке'-->
-        <!--                : 'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.'-->
-        <!--            }}-->
-        <!--          </p>-->
-        <!--          <button-->
-        <!--            class="relative bg-lime-500 hover:bg-lime-600 active:bg-lime-700 disabled:bg-slate-300 text-white w-3/4 rounded-2xl p-5 mt-3"-->
-        <!--            @click="emit('close-cart')"-->
-        <!--          >-->
-        <!--            <span class="flex items-center justify-center gap-5 font-semibold text-xl">-->
-        <!--              <ArrowLeftIcon class="w-6 h-6 transition arrow-icon-left" />-->
-        <!--              Вернуться назад-->
-        <!--            </span>-->
-        <!--          </button>-->
-        <!--        </div>-->
+        <cart-list v-if="cartStore.list.length"></cart-list>
+<!--        <div v-else class="flex flex-col gap-3 items-center justify-center h-full">-->
+<!--          <img-->
+<!--            :src="-->
+<!--              ordersIsBought-->
+<!--                ? '../src/assets/img/order-success-icon.png'-->
+<!--                : '../src/assets/img/package-icon.png'-->
+<!--            "-->
+<!--            alt=""-->
+<!--            class="h-32 w-32"-->
+<!--          />-->
+<!--          <h3 class="font-semibold text-2xl">-->
+<!--            &lt;!&ndash;            Корзина пустая&ndash;&gt;-->
+<!--            {{ ordersIsBought ? 'Заказ оформлен!' : 'Корзина пустая' }}-->
+<!--          </h3>-->
+<!--          <p class="text-lg text-[#9D9D9D] max-w-sm text-center">-->
+<!--            {{-->
+<!--              ordersIsBought-->
+<!--                ? 'Ваш заказ скоро будет передан курьерской доставке'-->
+<!--                : 'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.'-->
+<!--            }}-->
+<!--          </p>-->
+<!--          <button-->
+<!--            class="relative bg-lime-500 hover:bg-lime-600 active:bg-lime-700 disabled:bg-slate-300 text-white w-3/4 rounded-2xl p-5 mt-3"-->
+<!--            @click="emit('close-cart')"-->
+<!--          >-->
+<!--            <span class="flex items-center justify-center gap-5 font-semibold text-xl">-->
+<!--              <ArrowLeftIcon class="w-6 h-6 transition arrow-icon-left" />-->
+<!--              Вернуться назад-->
+<!--            </span>-->
+<!--          </button>-->
+<!--        </div>-->
       </div>
 
       <div class="flex flex-col gap-3">
