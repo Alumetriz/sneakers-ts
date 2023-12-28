@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCartStore } from '@/stores/CartStore'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const cartStore = useCartStore()
 
@@ -12,6 +12,14 @@ const openCart = (): void => {
   cartStore.openCart()
   emit('open-cart', cartStore.cartIsOpen)
 }
+
+const calcCartPrice = computed((): number => {
+  return cartStore.calcCartPrice
+})
+
+const calcPercent = computed((): number => {
+  return cartStore.calcPercent
+})
 </script>
 
 <template>
@@ -32,12 +40,22 @@ const openCart = (): void => {
           class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black"
           @click="openCart"
         >
-          <!--          <router-link to="/orders">-->
           <div class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
             <img src="/images/cart.svg" alt="Корзина" />
-            <span class="font-bold text-black">Корзина</span>
+            <span
+              :class="{
+                'font-bold': cartStore.ordersLength > 0,
+                'text-black': cartStore.ordersLength > 0,
+                'text-[#5C5C5C]': cartStore.ordersLength === 0,
+                'font-normal': cartStore.ordersLength === 0
+              }"
+              >{{
+                cartStore.list.length
+                  ? (calcCartPrice + calcPercent).toLocaleString('ru-RU') + ' руб.'
+                  : 'Корзина'
+              }}</span
+            >
           </div>
-          <!--          </router-link>-->
         </li>
         <li>
           <router-link to="/favorites">

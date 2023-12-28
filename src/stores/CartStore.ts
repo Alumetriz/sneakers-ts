@@ -51,6 +51,9 @@ export const useCartStore = defineStore('CartStore', {
     },
     calcPercent(): number {
       return this.calcCartPrice * 0.05
+    },
+    ordersLength(state): number {
+      return state.list.length
     }
   }
 })
