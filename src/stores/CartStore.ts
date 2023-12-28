@@ -29,11 +29,21 @@ export const useCartStore = defineStore('CartStore', {
       localStorage.setItem('orders-list', JSON.stringify(this.list))
     },
     deleteProductFromCart(product: Product) {
+      // product.isOrdered = false
+      // const productsStore = useProductsStore()
+      // productsStore.list[product.id].isOrdered = false
+      // this.list = this.list.filter((p) => p.id !== product.id)
+      // localStorage.setItem('orders-list', JSON.stringify(this.list))
+
       product.isOrdered = false
       const productsStore = useProductsStore()
-      productsStore.list[product.id].isOrdered = false
-      this.list = this.list.filter((p) => p.id !== product.id)
-      localStorage.setItem('orders-list', JSON.stringify(this.list))
+      const productIndex = productsStore.list.findIndex(p => p.id === product.id)
+
+      if (productIndex !== -1) {
+        productsStore.list[productIndex].isOrdered = false
+        this.list = this.list.filter((p) => p.id !== product.id)
+        localStorage.setItem('orders-list', JSON.stringify(this.list))
+      }
     },
     buyProducts() {
       this.list = []
