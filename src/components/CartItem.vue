@@ -25,7 +25,7 @@ const deleteOrder = () => {
       <img :src="`images/${order?.imageUrl}`" alt="Sneakers" class="h-[70px] w-[70px]" />
       <div>
         <h3 class="max-w-[250px] text-left">{{ order?.title }}</h3>
-        <span class="font-bold"> {{ order?.price }} руб.</span>
+        <span class="font-bold"> {{ order?.price.toLocaleString('ru-RU') }} руб.</span>
       </div>
       <img src="/images/close.svg" alt="Add" class="cursor-pointer h-9 w-9" @click="deleteOrder" />
     </div>

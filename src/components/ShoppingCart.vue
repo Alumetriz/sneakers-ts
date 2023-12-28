@@ -81,13 +81,13 @@ const calcPercent = computed((): number => {
           <span>Итого:</span>
           <div class="flex-1 border-b border-dashed"></div>
           <b>
-            {{ (calcCartPrice + calcPercent).toFixed(2) }} руб.
+            {{ (calcCartPrice + calcPercent).toLocaleString('ru-RU') }} руб.
           </b>
         </div>
         <div class="flex gap-2 items-center">
           <span>Налог 5%:</span>
           <div class="flex-1 border-b border-dashed"></div>
-          <b> {{ calcPercent.toFixed(2) }} руб.</b>
+          <b> {{ calcPercent.toLocaleString('ru-RU') }} руб.</b>
         </div>
         <button
           :disabled="!cartStore.list.length"

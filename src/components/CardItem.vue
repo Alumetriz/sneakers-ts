@@ -39,7 +39,7 @@ const toggleProductToCart = () => {
     <div class="flex items-center justify-between mt-5">
       <div class="flex flex-col">
         <span class="text-[#BDBDBD]">Цена:</span>
-        <span class="font-bold text-sm"> {{ product.price?.toString() }} руб.</span>
+        <span class="font-bold text-sm"> {{ product.price?.toLocaleString('ru-RU') }} руб.</span>
       </div>
 
       <img
