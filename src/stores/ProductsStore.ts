@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useCartStore } from '@/stores/CartStore'
 import type { Product } from '@/types'
 import axios from 'axios'
 
@@ -24,9 +25,20 @@ export const useProductsStore = defineStore('ProductsStore', {
             isOrdered: false
           }
         })
+
+        this.updateIsOrdered()
       } catch (e) {
         console.log(e)
       }
+    },
+    updateIsOrdered(): void {
+      const cartStore = useCartStore()
+
+      const orderedIds = cartStore.list.map((product) => product.id)
+
+      this.list.forEach((product) => {
+        product.isOrdered = orderedIds.includes(product.id)
+      })
     }
   }
 })

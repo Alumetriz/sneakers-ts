@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import type { Product } from '@/types'
+import { useProductsStore } from '@/stores/ProductsStore'
 
 interface StateShape {
   list: Product[]
@@ -8,16 +9,7 @@ interface StateShape {
 
 export const useCartStore = defineStore('CartStore', {
   state: (): StateShape => ({
-    list: [
-      {
-        id: 2,
-        title: 'Мужские Кроссовки Nike Air Max 270',
-        price: 15600,
-        imageUrl: '/sneakers/sneakers-2.jpg',
-        isFavorite: false,
-        isOrdered: false
-      }
-    ],
+    list: JSON.parse(localStorage.getItem('orders-list') as string) || [],
     cartIsOpen: false
   }),
   actions: {
@@ -30,10 +22,14 @@ export const useCartStore = defineStore('CartStore', {
     addProductToCart(product: Product) {
       product.isOrdered = true
       this.list.push(product)
+      localStorage.setItem('orders-list', JSON.stringify(this.list))
     },
     deleteProductFromCart(product: Product) {
       product.isOrdered = false
+      const productsStore = useProductsStore()
+      productsStore.list[product.id].isOrdered = false
       this.list = this.list.filter((p) => p.id !== product.id)
+      localStorage.setItem('orders-list', JSON.stringify(this.list))
     }
   },
   getters: {}

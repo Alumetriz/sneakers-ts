@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import CardItem from '@/components/CardItem.vue'
 import { useProductsStore } from '@/stores/ProductsStore'
-import { computed, onMounted } from 'vue'
+import { useCartStore } from '@/stores/CartStore'
+import { computed, onMounted, watch } from 'vue'
 import type { Product } from '@/types'
 
 const props = defineProps({
@@ -16,6 +17,7 @@ const props = defineProps({
 })
 
 const productsStore = useProductsStore()
+const cartStore = useCartStore()
 
 const filteredProducts = computed((): Product[] => {
   const searchParams = props.searchParam.toLowerCase().split(' ')
@@ -40,6 +42,13 @@ const filteredProducts = computed((): Product[] => {
 onMounted(() => {
   productsStore.fetchData()
 })
+
+watch(
+  () => cartStore.list,
+  () => {
+    productsStore.updateIsOrdered()
+  }
+)
 </script>
 
 <template>
