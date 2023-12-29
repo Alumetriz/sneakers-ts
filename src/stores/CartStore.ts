@@ -75,7 +75,7 @@ export const useCartStore = defineStore('CartStore', {
     //     this.productsIsBought = false
     //   }, 3000)
     // }
-    buyProducts(state: StateShape) {
+    buyProducts() {
       const productsStore = useProductsStore()
       const favoritesStore = useFavoritesStore()
 
