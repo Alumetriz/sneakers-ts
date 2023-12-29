@@ -57,11 +57,50 @@ export const useCartStore = defineStore('CartStore', {
         localStorage.setItem('favorites-list', JSON.stringify(favoritesStore.list))
       }
     },
-    buyProducts() {
+    // buyProducts() {
+    //   this.list = []
+    //   this.productsIsBought = true
+    //   localStorage.setItem('orders-list', JSON.stringify(this.list))
+    //
+    //   const favoritesStore = useFavoritesStore()
+    //   const favoriteIndex = favoritesStore.list.findIndex((p) => p.id === product.id)
+    //
+    //   if (favoriteIndex !== -1) {
+    //     favoritesStore.list[favoriteIndex].isOrdered = false
+    //   }
+    //   localStorage.setItem('favorites-list', JSON.stringify(favoritesStore.list))
+    //
+    //
+    //   setTimeout(() => {
+    //     this.productsIsBought = false
+    //   }, 3000)
+    // }
+    buyProducts(state: StateShape) {
+      const productsStore = useProductsStore()
+      const favoritesStore = useFavoritesStore()
+
+      // Mark products as bought and update respective stores
+      this.list.forEach(product => {
+        product.isOrdered = false
+
+        const productIndex = productsStore.list.findIndex(p => p.id === product.id)
+        if (productIndex !== -1) {
+          productsStore.list[productIndex].isOrdered = false
+        }
+
+        const favoriteIndex = favoritesStore.list.findIndex(p => p.id === product.id)
+        if (favoriteIndex !== -1) {
+          favoritesStore.list[favoriteIndex].isOrdered = false
+        }
+      })
+
+      // Clear the cart and update local storage
       this.list = []
       this.productsIsBought = true
       localStorage.setItem('orders-list', JSON.stringify(this.list))
+      localStorage.setItem('favorites-list', JSON.stringify(favoritesStore.list))
 
+      // Reset the 'productsIsBought' flag after 3 seconds
       setTimeout(() => {
         this.productsIsBought = false
       }, 3000)
