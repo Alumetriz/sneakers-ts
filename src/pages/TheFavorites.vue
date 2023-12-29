@@ -6,9 +6,11 @@ import FavoritesCardsList from '@/components/FavoritesCardsList.vue'
 <template>
   <main class="p-11">
     <div class="flex items-center gap-5">
-      <ChevronLeftIcon
-        class="h-9 p-2 text-[#C8C8C8] border border-gray-200 rounded-md cursor-pointer"
-      ></ChevronLeftIcon>
+      <router-link to="/">
+        <ChevronLeftIcon
+          class="h-9 p-2 text-[#C8C8C8] border border-gray-200 rounded-md cursor-pointer"
+        ></ChevronLeftIcon>
+      </router-link>
       <h1 class="font-bold text-3xl">Мои закладки</h1>
     </div>
 
