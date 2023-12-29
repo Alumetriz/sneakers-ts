@@ -2,6 +2,7 @@
 import type { PropType } from 'vue'
 import type { Product } from '@/types'
 import { useCartStore } from '@/stores/CartStore'
+import { useFavoritesStore } from '@/stores/FavoritesStore'
 
 const props = defineProps({
   product: {
@@ -11,12 +12,21 @@ const props = defineProps({
 })
 
 const cartStore = useCartStore()
+const favoritesStore = useFavoritesStore()
 
 const toggleProductToCart = () => {
   if (!props.product?.isOrdered) {
     cartStore.addProductToCart(props.product)
   } else {
     cartStore.deleteProductFromCart(props.product)
+  }
+}
+
+const toggleProductToFavorites = () => {
+  if (!props.product?.isFavorite) {
+    favoritesStore.addProductToFavorites(props.product)
+  } else {
+    favoritesStore.deleteProductFromFavorites(props.product)
   }
 }
 </script>
@@ -26,12 +36,11 @@ const toggleProductToCart = () => {
     class="relative border border-gray-200 p-8 rounded-3xl cursor-pointer transition hover:-translate-y-2 hover:shadow-xl"
   >
     <img
-      v-if="!product.isFavorite"
-      src="/images/like-1.svg"
+      :src="`/images/${!product.isFavorite ? 'like-1.svg' : 'like-2.svg'}`"
       alt=""
       class="absolute cursor-pointer h-9 w-9"
+      @click="toggleProductToFavorites"
     />
-    <img v-else src="/images/like-2.svg" alt="" class="absolute cursor-pointer h-9 w-9" />
     <img :src="`images/${product.imageUrl}`" alt="Sneakers" />
 
     <h3 class="mt-2">{{ product.title }}</h3>
@@ -48,7 +57,6 @@ const toggleProductToCart = () => {
         class="cursor-pointer h-9 w-9"
         @click="toggleProductToCart"
       />
-      <!--      <img v-else src="/images/checked.svg" alt="Added" class="cursor-pointer h-9 w-9" />-->
     </div>
   </div>
 </template>

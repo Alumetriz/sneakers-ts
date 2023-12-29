@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { useCartStore } from '@/stores/CartStore'
+import { useFavoritesStore } from '@/stores/FavoritesStore'
 import type { Product } from '@/types'
 import axios from 'axios'
 
@@ -9,7 +10,7 @@ interface StateShape {
 
 export const useProductsStore = defineStore('ProductsStore', {
   state: (): StateShape => ({
-    list: []
+    list: JSON.parse(localStorage.getItem('products') as string) || []
   }),
   actions: {
     async fetchData() {
@@ -27,17 +28,21 @@ export const useProductsStore = defineStore('ProductsStore', {
         })
 
         this.updateIsOrdered()
+        localStorage.setItem('products', JSON.stringify(this.list))
       } catch (e) {
         console.log(e)
       }
     },
     updateIsOrdered(): void {
       const cartStore = useCartStore()
+      const favoritesStore = useFavoritesStore()
 
       const orderedIds = cartStore.list.map((product) => product.id)
+      const favoritesIds = favoritesStore.list.map((product) => product.id)
 
       this.list.forEach((product) => {
         product.isOrdered = orderedIds.includes(product.id)
+        product.isFavorite = favoritesIds.includes(product.id)
       })
     }
   }
