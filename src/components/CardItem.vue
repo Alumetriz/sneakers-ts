@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import type { Product } from '@/types'
-import { useCartStore } from '@/stores/CartStore'
-import { useFavoritesStore } from '@/stores/FavoritesStore'
+import { useCartStore } from '@/app/stores/CartStore'
+import { useFavoritesStore } from '@/app/stores/FavoritesStore'
 
 const props = defineProps({
   product: {

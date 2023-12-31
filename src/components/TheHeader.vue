@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCartStore } from '@/stores/CartStore'
+import { useCartStore } from '@/app/stores/CartStore'
 import { computed, ref } from 'vue'
 
 const cartStore = useCartStore()

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CardItem from '@/components/CardItem.vue'
-import { useProductsStore } from '@/stores/ProductsStore'
-import { useCartStore } from '@/stores/CartStore'
+import { useProductsStore } from '@/app/stores/ProductsStore'
+import { useCartStore } from '@/app/stores/CartStore'
 import { computed, onMounted, watch } from 'vue'
 import type { Product } from '@/types'
 

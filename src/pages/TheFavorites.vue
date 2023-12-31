@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ChevronLeftIcon, ArrowLeftIcon } from '@heroicons/vue/24/solid'
 import FavoritesCardsList from '@/components/FavoritesCardsList.vue'
-import { useFavoritesStore } from '@/stores/FavoritesStore'
+import { useFavoritesStore } from '@/app/stores/FavoritesStore'
 
 const favoritesStore = useFavoritesStore()
 </script>

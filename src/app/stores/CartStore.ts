@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import type { Product } from '@/types'
-import { useProductsStore } from '@/stores/ProductsStore'
-import { useFavoritesStore } from '@/stores/FavoritesStore'
+import { useProductsStore } from '@/app/stores/ProductsStore'
+import { useFavoritesStore } from '@/app/stores/FavoritesStore'
 
 interface StateShape {
   list: Product[]

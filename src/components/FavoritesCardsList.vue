@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CardItem from '@/components/CardItem.vue'
-import { useFavoritesStore } from '@/stores/FavoritesStore'
+import { useFavoritesStore } from '@/app/stores/FavoritesStore'
 
 const favoritesStore = useFavoritesStore()
 </script>

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { useProductsStore } from '@/stores/ProductsStore'
+import { useProductsStore } from '@/app/stores/ProductsStore'
 import type { Product } from '@/types'
 
 interface StateShape {

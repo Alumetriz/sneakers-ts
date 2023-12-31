@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import type { Product } from '@/types'
-import { useCartStore } from '@/stores/CartStore'
+import { useCartStore } from '@/app/stores/CartStore'
 
 const props = defineProps({
   order: {

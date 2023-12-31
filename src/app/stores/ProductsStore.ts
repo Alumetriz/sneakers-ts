@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-import { useCartStore } from '@/stores/CartStore'
-import { useFavoritesStore } from '@/stores/FavoritesStore'
+import { useCartStore } from '@/app/stores/CartStore'
+import { useFavoritesStore } from '@/app/stores/FavoritesStore'
 import type { Product } from '@/types'
 import axios from 'axios'
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ArrowRightIcon, ArrowLeftIcon } from '@heroicons/vue/24/solid'
 import CartList from '@/components/CartList.vue'
-import { useCartStore } from '@/stores/CartStore'
+import { useCartStore } from '@/app/stores/CartStore'
 import { computed } from 'vue'
 
 const cartStore = useCartStore()
