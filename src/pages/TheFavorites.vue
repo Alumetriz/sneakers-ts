@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Header } from '@/widgets/header'
 import { ChevronLeftIcon, ArrowLeftIcon } from '@heroicons/vue/24/solid'
 import FavoritesCardsList from '@/components/FavoritesCardsList.vue'
 import { useFavoritesStore } from '@/app/stores/FavoritesStore'
@@ -7,6 +8,7 @@ const favoritesStore = useFavoritesStore()
 </script>
 
 <template>
+  <Header />
   <main class="p-11">
     <div class="flex items-center gap-5">
       <router-link to="/">

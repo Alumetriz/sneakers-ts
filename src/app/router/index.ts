@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import TheHome from '@/pages/TheHome.vue'
 import TheFavorites from '@/pages/TheFavorites.vue'
-import TheOrders from '@/pages/TheOrders.vue'
 
 const routes = [
   {
@@ -13,11 +12,6 @@ const routes = [
     path: '/favorites',
     name: 'Favorites',
     component: TheFavorites
-  },
-  {
-    path: '/orders',
-    name: 'Orders',
-    component: TheOrders
   }
 ]
 

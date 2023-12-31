@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CardsList from '@/components/CardsList.vue'
+import { Header } from '@/widgets/header'
 import FilterPanel from '@/components/FilterPanel.vue'
 import { ref } from 'vue'
 
@@ -16,6 +17,7 @@ const getSortParam = (payload: string) => {
 </script>
 
 <template>
+  <Header />
   <div class="p-11 min-h-[75vh]">
     <filter-panel @search-product="getSearchParam" @sort-products="getSortParam"></filter-panel>
 
