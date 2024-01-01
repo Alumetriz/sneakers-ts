@@ -18,7 +18,7 @@ const getSortParam = (payload: string) => {
 
 <template>
   <Header />
-  <div class="p-11 min-h-[75vh]">
+  <div class="p-11 min-h-[100vh]">
     <filter-panel @search-product="getSearchParam" @sort-products="getSortParam"></filter-panel>
 
     <cards-list :search-param="searchParam" :sort-param="sortParam"></cards-list>
