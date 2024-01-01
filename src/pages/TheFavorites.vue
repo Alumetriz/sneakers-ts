@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Header } from '@/widgets/header'
 import { ChevronLeftIcon } from '@heroicons/vue/24/solid'
-import FavoritesCardsList from '@/components/FavoritesCardsList.vue'
+import { FavoritesList } from '@/widgets/products/favoritesList'
 import { useFavoritesStore } from '@/app/stores/FavoritesStore'
-import {BackButton} from "@/shared/button/BackButton";
+import { BackButton } from '@/shared/button/BackButton'
 
 const favoritesStore = useFavoritesStore()
 </script>
@@ -20,13 +20,15 @@ const favoritesStore = useFavoritesStore()
       <h1 class="font-bold text-3xl">Мои закладки</h1>
     </div>
 
-    <favorites-cards-list v-if="favoritesStore.list.length"></favorites-cards-list>
+    <favorites-list v-if="favoritesStore.list.length"></favorites-list>
     <div v-else class="flex flex-col gap-3 items-center justify-center h-full p-11">
       <img src="/images/emoji-1.png" alt="" class="h-16 w-16" />
       <h3 class="font-semibold text-2xl">Закладок нет :(</h3>
       <p class="text-lg text-[#9D9D9D] max-w-sm text-center">Вы ничего не добавляли в закладки</p>
       <router-link to="/">
-        <BackButton button-style="relative bg-lime-500 hover:bg-lime-600 active:bg-lime-700 disabled:bg-slate-300 text-white w-[250px] rounded-2xl p-5 mt-3" />
+        <BackButton
+          button-style="relative bg-lime-500 hover:bg-lime-600 active:bg-lime-700 disabled:bg-slate-300 text-white w-[250px] rounded-2xl p-5 mt-3"
+        />
       </router-link>
     </div>
   </main>

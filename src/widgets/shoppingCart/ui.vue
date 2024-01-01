@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowRightIcon, ArrowLeftIcon } from '@heroicons/vue/24/solid'
-import CartList from '@/components/CartList.vue'
+import CartList from '@/features/cart/cartList/ui.vue'
 import { useCartStore } from '@/app/stores/CartStore'
 import { computed } from 'vue'
 import { BackButton } from '@/shared/button/BackButton'

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import CardItem from '@/components/CardItem.vue'
+import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useProductsStore } from '@/app/stores/ProductsStore'
 import { useCartStore } from '@/app/stores/CartStore'
-import { computed, onMounted, ref, watch } from 'vue'
+import { CardItem } from '@/widgets/products/cardItem'
 import type { Product } from '@/types'
-import { useRoute, useRouter } from 'vue-router'
 
 const props = defineProps({
   searchParam: {

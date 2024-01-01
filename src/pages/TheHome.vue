@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import CardsList from '@/components/CardsList.vue'
+import { CardsList } from '@/widgets/products/cardsList'
 import { Header } from '@/widgets/header'
-import FilterPanel from '@/components/FilterPanel.vue'
+import { FilterPanel } from '@/features/products/filterPanel'
 import { ref } from 'vue'
 
 const searchParam = ref('')
