@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { useCartStore } from '@/app/stores/CartStore'
 import { computed } from 'vue'
+import { useCartStore } from '@/app/stores/CartStore'
+import { Icon } from '@/shared/icon'
 
 const cartStore = useCartStore()
 
@@ -30,7 +31,7 @@ const calcPercent = computed((): number => {
         @click="openCart"
       >
         <div class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
-          <img src="/images/cart.svg" alt="Корзина" />
+          <Icon type="cart" />
           <span
             :class="{
               'font-bold': cartStore.ordersLength > 0,
@@ -49,14 +50,14 @@ const calcPercent = computed((): number => {
       <li>
         <router-link to="/favorites">
           <div class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
-            <img src="/images/heart.svg" alt="Закладки" />
+            <Icon type="favorites" />
             <span class="text-[#5C5C5C] font-normal">Закладки</span>
           </div>
         </router-link>
       </li>
       <li class="flex items-center cursor-pointer gap-3 text-gray-500 hover:text-black">
         <a href="#" class="flex gap-3">
-          <img src="/images/profile.svg" alt="Профиль" />
+          <Icon type="profile" />
           <span class="text-[#5C5C5C] font-normal">Профиль</span>
         </a>
       </li>

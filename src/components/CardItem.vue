@@ -3,6 +3,7 @@ import type { PropType } from 'vue'
 import type { Product } from '@/types'
 import { useCartStore } from '@/app/stores/CartStore'
 import { useFavoritesStore } from '@/app/stores/FavoritesStore'
+import { Icon } from '@/shared/icon'
 
 const props = defineProps({
   product: {
@@ -35,12 +36,13 @@ const toggleProductToFavorites = () => {
   <div
     class="relative border border-gray-200 p-8 rounded-3xl cursor-pointer transition hover:-translate-y-2 hover:shadow-xl"
   >
-    <img
-      :src="`/images/${!product.isFavorite ? 'like-1.svg' : 'like-2.svg'}`"
-      alt=""
-      class="absolute cursor-pointer h-9 w-9"
-      @click="toggleProductToFavorites"
-    />
+    <div @click="toggleProductToFavorites">
+      <Icon
+        :key="!product.isFavorite ? 'like' : 'liked'"
+        :type="!product.isFavorite ? 'like' : 'liked'"
+        icon-style="absolute cursor-pointer h-9 w-9"
+      ></Icon>
+    </div>
     <img :src="`images/${product.imageUrl}`" alt="Sneakers" />
 
     <h3 class="mt-2">{{ product.title }}</h3>
@@ -51,12 +53,13 @@ const toggleProductToFavorites = () => {
         <span class="font-bold text-sm"> {{ product.price?.toLocaleString('ru-RU') }} руб.</span>
       </div>
 
-      <img
-        :src="!product.isOrdered ? '/images/plus.svg' : '/images/checked.svg'"
-        alt="Add"
-        class="cursor-pointer h-9 w-9"
-        @click="toggleProductToCart"
-      />
+      <div @click="toggleProductToCart">
+        <Icon
+          :key="!product.isOrdered ? 'add' : 'added'"
+          :type="!product.isOrdered ? 'add' : 'added'"
+          icon-style="cursor-pointer h-9 w-9"
+        />
+      </div>
     </div>
   </div>
 </template>

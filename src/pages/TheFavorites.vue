@@ -3,6 +3,7 @@ import { Header } from '@/widgets/header'
 import { ChevronLeftIcon, ArrowLeftIcon } from '@heroicons/vue/24/solid'
 import FavoritesCardsList from '@/components/FavoritesCardsList.vue'
 import { useFavoritesStore } from '@/app/stores/FavoritesStore'
+import {BackButton} from "@/shared/button/BackButton";
 
 const favoritesStore = useFavoritesStore()
 </script>
@@ -25,14 +26,15 @@ const favoritesStore = useFavoritesStore()
       <h3 class="font-semibold text-2xl">Закладок нет :(</h3>
       <p class="text-lg text-[#9D9D9D] max-w-sm text-center">Вы ничего не добавляли в закладки</p>
       <router-link to="/">
-        <button
-          class="relative bg-lime-500 hover:bg-lime-600 active:bg-lime-700 disabled:bg-slate-300 text-white w-[250px] rounded-2xl p-5 mt-3"
-        >
-          <span class="flex items-center justify-center gap-5 font-semibold text-xl">
-            <ArrowLeftIcon class="w-6 h-6 transition arrow-icon-left" />
-            Вернуться назад
-          </span>
-        </button>
+<!--        <button-->
+<!--          class="relative bg-lime-500 hover:bg-lime-600 active:bg-lime-700 disabled:bg-slate-300 text-white w-[250px] rounded-2xl p-5 mt-3"-->
+<!--        >-->
+<!--          <span class="flex items-center justify-center gap-5 font-semibold text-xl">-->
+<!--            <ArrowLeftIcon class="w-6 h-6 transition arrow-icon-left" />-->
+<!--            Вернуться назад-->
+<!--          </span>-->
+<!--        </button>-->
+        <BackButton button-style="relative bg-lime-500 hover:bg-lime-600 active:bg-lime-700 disabled:bg-slate-300 text-white w-[250px] rounded-2xl p-5 mt-3" />
       </router-link>
     </div>
   </main>

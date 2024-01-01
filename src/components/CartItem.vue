@@ -2,6 +2,7 @@
 import type { PropType } from 'vue'
 import type { Product } from '@/types'
 import { useCartStore } from '@/app/stores/CartStore'
+import { Icon } from '@/shared/icon'
 
 const props = defineProps({
   order: {
@@ -27,7 +28,9 @@ const deleteOrder = () => {
         <h3 class="max-w-[250px] text-left">{{ order?.title }}</h3>
         <span class="font-bold"> {{ order?.price.toLocaleString('ru-RU') }} руб.</span>
       </div>
-      <img src="/images/close.svg" alt="Add" class="cursor-pointer h-9 w-9" @click="deleteOrder" />
+      <div @click="deleteOrder">
+        <Icon type="close" icon-style="cursor-pointer h-9 w-9" />
+      </div>
     </div>
   </div>
 </template>

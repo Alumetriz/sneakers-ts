@@ -3,6 +3,7 @@ import { ArrowRightIcon, ArrowLeftIcon } from '@heroicons/vue/24/solid'
 import CartList from '@/components/CartList.vue'
 import { useCartStore } from '@/app/stores/CartStore'
 import { computed } from 'vue'
+import { BackButton } from '@/shared/button/BackButton'
 
 const cartStore = useCartStore()
 
@@ -64,15 +65,11 @@ const calcPercent = computed((): number => {
                 : 'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.'
             }}
           </p>
-          <button
-            class="relative bg-lime-500 hover:bg-lime-600 active:bg-lime-700 disabled:bg-slate-300 text-white w-3/4 rounded-2xl p-5 mt-3"
+
+          <BackButton
+            button-style="relative bg-lime-500 hover:bg-lime-600 active:bg-lime-700 disabled:bg-slate-300 text-white w-3/4 rounded-2xl p-5 mt-3"
             @click="closeCart"
-          >
-            <span class="flex items-center justify-center gap-5 font-semibold text-xl">
-              <ArrowLeftIcon class="w-6 h-6 transition arrow-icon-left" />
-              Вернуться назад
-            </span>
-          </button>
+          />
         </div>
       </div>
 
@@ -80,9 +77,7 @@ const calcPercent = computed((): number => {
         <div class="flex gap-2 items-center">
           <span>Итого:</span>
           <div class="flex-1 border-b border-dashed"></div>
-          <b>
-            {{ (calcCartPrice + calcPercent).toLocaleString('ru-RU') }} руб.
-          </b>
+          <b> {{ (calcCartPrice + calcPercent).toLocaleString('ru-RU') }} руб. </b>
         </div>
         <div class="flex gap-2 items-center">
           <span>Налог 5%:</span>
